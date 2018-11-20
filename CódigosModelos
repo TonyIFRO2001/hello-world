@@ -1,0 +1,155 @@
+//MODELS
+
+package Models;
+
+public class Cartao_cred {
+
+    public static float getpagprazo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    private float pagprazo;
+
+    public float getPagprazo() {
+        return pagprazo;
+    }
+   
+}
+//CLIENTE
+
+package Models;
+
+
+public class Cliente {
+    private String nome;
+    private int RG; 
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getRG() {
+        return RG;
+    }
+
+    public String getNome_Cliente() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+}
+//ENTRADA
+
+package Models;
+
+
+public class Entrada {
+    private String Registro_Entrada;
+    private String Hora_Entrada;
+    private String Cor_Veiculo;
+    private int Qtd_Vagas; 
+    private String Placa_Veiculo; 
+
+    public String getRegistro_Entrada() {
+        return Registro_Entrada;
+    }
+
+    public String getHora_Entrada() {
+        return Hora_Entrada;
+    }
+
+    public String getCor_Veiculo() {
+        return Cor_Veiculo;
+    }
+
+    public int getQtd_vagas() {
+        return Qtd_Vagas;
+    }
+
+    public String getPlaca_Veiculo() {
+        return Placa_Veiculo;
+    }
+
+    public int getQtd_Vagas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    
+}
+//FUNCIONARIO
+package Models;
+
+public class Funcionario {
+    private String nome; 
+    private String endereco; 
+    private int CPF, RG;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public int getCPF() {
+        return CPF;
+    }
+
+    public int getRG() {
+        return RG;
+    }
+
+    public String getid_funcionario() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+}
+//PAGAMENTO
+
+package Models;
+
+public class Pagamento {
+    private int num_cartao;
+    private int agencia;
+    private String nome_cartao; 
+    private  int senha; 
+    private float dinheiro;
+
+    public int getNum_cartao() {
+        return num_cartao;
+    }
+
+    public int getAgencia() {
+        return agencia;
+    }
+
+    public String getNome_cartao() {
+        return nome_cartao;
+    }
+
+    public int getSenha() {
+        return senha;
+    }
+
+    public float getDinheiro() {
+        return dinheiro;
+    }
+    
+    
+}
+//SAIDA
+package Models;
+
+public class Saida {
+    private String Registro_saida; 
+    private String Hora_pagamento;
+
+    public String getRegistro_saida() {
+        return Registro_saida;
+    }
+
+    public String getHora_pagamento() {
+        return Hora_pagamento;
+    }
+    
+}
