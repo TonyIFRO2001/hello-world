@@ -1,0 +1,230 @@
+// Codificação Versão 1 Incompleta
+
+////DAO
+
+package DAO;
+
+import Models.Cliente;
+import Models.Saida;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+
+public class ClienteDAO {
+    private Connection conexao=null;
+    
+    public ClienteDAO(){
+        conexao = Conexao.getConexaoMYSQL();
+    }
+    
+    public boolean insert(Cliente cliente){ 
+        String sql = "INSERT INTO entrada (Nome_Cliente, RG) VALUES (?,?)";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setString(1, cliente.getNome_Cliente());
+        statement.setInt(2, cliente.getRG());
+        
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            Conexao.FecharConexao();
+        }
+    }
+}
+ // CARTÃO DE CRÉDITO DAO
+ 
+package DAO;
+
+import Models.Cartao_cred;
+import Models.Cliente;
+import Models.Pagamento;
+import Models.Saida;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+
+public class cartao_credDAO {
+    private Connection conexao=null;
+    
+    public cartao_credDAO(){
+        conexao = Conexao.getConexaoMYSQL();
+    }
+    
+    public boolean insert(Cartao_cred cartao_credDAO){ 
+        String sql = "INSERT INTO entrada (pagprazo) VALUES (?)";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setFloat(1, Cartao_cred.getpagprazo());
+     
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            Conexao.FecharConexao();
+        }
+    }
+}
+//ENTRADA DAO
+package DAO;
+
+import Models.Entrada;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+
+public class entradaDAO {
+    private Connection conexao=null;
+    
+    public entradaDAO(){
+        conexao = Conexao.getConexaoMYSQL();
+    }
+    
+    public boolean insert(Entrada entrada){ 
+        String sql = "INSERT INTO entrada (Registro_Entrada,Hora_Entrada,Qtd_vagas,Cor_veículo,Placa_Veículo) VALUES (?,?,?,?,?)";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setString(1, entrada.getRegistro_Entrada());
+        statement.setString(2, entrada.getHora_Entrada());
+        statement.setInt(3, entrada.getQtd_Vagas());
+        statement.setString(4, entrada.getCor_Veiculo());
+        statement.setString(5, entrada.getPlaca_Veiculo());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            Conexao.FecharConexao();
+        }
+    }
+}
+// FUNCIONÁRIO DAO
+package DAO;
+
+import Models.Funcionario;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+
+public class funcionarioDAO {
+    private Connection conexao=null;
+    
+    public funcionarioDAO(){
+        conexao = Conexao.getConexaoMYSQL();
+    }
+    
+    public boolean insert(Funcionario funcionario){ 
+        String sql = "INSERT INTO funcionario(id_funcionario,Nome,RG,CPF, Endereco) VALUES (?,?,?,?,?)";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setString(1, funcionario.getid_funcionario());
+        statement.setString(2, funcionario.getNome());
+        statement.setInt(3,  funcionario.getRG());
+        statement.setInt(4, funcionario.getCPF());
+        statement.setString(5, funcionario.getEndereco());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            Conexao.FecharConexao();
+        }
+    }
+}
+
+//PAGAMENTO DAO
+
+package DAO;
+
+import Models.Cliente;
+import Models.Pagamento;
+import Models.Saida;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+
+public class pagamentoDAO {
+    private Connection conexao=null;
+    
+    public pagamentoDAO(){
+        conexao = Conexao.getConexaoMYSQL();
+    }
+    
+    public boolean insert(Pagamento pagamento){ 
+        String sql = "INSERT INTO entrada (Num_cartao, Agencia, Nome_cartao, Senha, Dinheiro) VALUES (?,?)";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setInt(1, pagamento.getNum_cartao());
+        statement.setInt(2, pagamento.getAgencia());
+        statement.setString(2, pagamento.getNome_cartao());
+        statement.setInt(2, pagamento.getSenha());
+        statement.setFloat(2, pagamento.getDinheiro());
+
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            Conexao.FecharConexao();
+        }
+    }
+}
+
+
+//SAIDA DAO
+package DAO;
+
+import Models.Saida;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+
+public class saidaDAO {
+    private Connection conexao=null;
+    
+    public saidaDAO(){
+        conexao = Conexao.getConexaoMYSQL();
+    }
+    
+    public boolean insert(Saida saida){ 
+        String sql = "INSERT INTO entrada (Registro_saida,Hora_pagamento) VALUES (?,?)";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setString(1, saida.getRegistro_saida());
+        statement.setString(2, saida.getHora_pagamento());
+        
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            Conexao.FecharConexao();
+        }
+    }
+}
